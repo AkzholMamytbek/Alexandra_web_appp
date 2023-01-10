@@ -1,101 +1,79 @@
-//API to handle audio recording 
+'use strict'
 
-var audioRecorder = {
-    /** Stores the recorded audio as Blob objects of audio data as the recording continues*/
-    audioBlobs: [],/*of type Blob[]*/
-    /** Stores the reference of the MediaRecorder instance that handles the MediaStream when recording starts*/
-    mediaRecorder: null, /*of type MediaRecorder*/
-    /** Stores the reference to the stream currently capturing the audio*/
-    streamBeingCaptured: null, /*of type MediaStream*/
-    /** Start recording the audio 
-     * @returns {Promise} - returns a promise that resolves if audio recording successfully started
-     */
-    start: function () {
-        //Feature Detection
-        if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
-            //Feature is not supported in browser
-            //return a custom error
-            return Promise.reject(new Error('mediaDevices API or getUserMedia method is not supported in this browser.'));
-        }
+let log = console.log.bind(console),
+id = val => document.getElementById(val),
+ul = id('ul'),
+gUMbtn = id('gUMbtn'),
+start = id('start'),
+stop = id('stop'),
+stream,
+recorder,
+counter=1,
+chunks,
+media;
 
-        else {
-            //Feature is supported in browser
 
-            //create an audio stream
-            return navigator.mediaDevices.getUserMedia({ audio: true }/*of type MediaStreamConstraints*/)
-                //returns a promise that resolves to the audio stream
-                .then(stream /*of type MediaStream*/ => {
+gUMbtn.onclick = e => {
+    let mv = id('mediaVideo'),
+        mediaOptions = {
+            video: {
+            tag: 'video',
+            type: 'video/webm',
+            ext: '.mp4',
+            gUM: {video: true, audio: true}
+            },
+            audio: {
+            tag: 'audio',
+            type: 'audio/ogg',
+            ext: '.ogg',
+            gUM: {audio: true}
+            }
+        };
+    media = mv.checked ? mediaOptions.video : mediaOptions.audio;
+    navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
+        stream = _stream;
+        id('gUMArea').style.display = 'none';
+        id('btns').style.display = 'inherit';
+        start.removeAttribute('disabled');
+        recorder = new MediaRecorder(stream);
+        recorder.ondataavailable = e => {
+            chunks.push(e.data);
+            if(recorder.state == 'inactive')  makeLink();
+        };
+        log('got media successfully');
+        }).catch(log);
+}
 
-                    //save the reference of the stream to be able to stop it when necessary
-                    audioRecorder.streamBeingCaptured = stream;
+start.onclick = e => {
+    start.disabled = true;
+    stop.removeAttribute('disabled');
+    chunks=[];
+    recorder.start();
+}
 
-                    //create a media recorder instance by passing that stream into the MediaRecorder constructor
-                    audioRecorder.mediaRecorder = new MediaRecorder(stream); /*the MediaRecorder interface of the MediaStream Recording
-                    API provides functionality to easily record media*/
 
-                    //clear previously saved audio Blobs, if any
-                    audioRecorder.audioBlobs = [];
+stop.onclick = e => {
+    stop.disabled = true;
+    recorder.stop();
+    start.removeAttribute('disabled');
+}
 
-                    //add a dataavailable event listener in order to store the audio data Blobs when recording
-                    audioRecorder.mediaRecorder.addEventListener("dataavailable", event => {
-                        //store audio Blob object
-                        audioRecorder.audioBlobs.push(event.data);
-                    });
 
-                    //start the recording by calling the start method on the media recorder
-                    audioRecorder.mediaRecorder.start();
-                });
 
-            /* errors are not handled in the API because if its handled and the promise is chained, the .then after the catch will be executed*/
-        }
-    },
-    /** Stop the started audio recording
-     * @returns {Promise} - returns a promise that resolves to the audio as a blob file
-     */
-    stop: function () {
-        //return a promise that would return the blob or URL of the recording
-        return new Promise(resolve => {
-            //save audio type to pass to set the Blob type
-            let mimeType = audioRecorder.mediaRecorder.mimeType;
+function makeLink(){
+    let blob = new Blob(chunks, {type: media.type })
+        , url = URL.createObjectURL(blob)
+        , li = document.createElement('li')
+        , mt = document.createElement(media.tag)
+        , hf = document.createElement('a')
+    ;
+    mt.controls = true;
+    mt.src = url;
+    hf.href = url;
+    hf.download = `${counter++}${media.ext}`;
+    hf.innerHTML = `donwload ${hf.download}`;
 
-            //listen to the stop event in order to create & return a single Blob object
-            audioRecorder.mediaRecorder.addEventListener("stop", () => {
-                //create a single blob object, as we might have gathered a few Blob objects that needs to be joined as one
-                let audioBlob = new Blob(audioRecorder.audioBlobs, { type: mimeType });
-                
-                //resolve promise with the single audio blob representing the recorded audio
-                resolve(audioBlob);
-            });
-            audioRecorder.cancel();
-        });
-    },
-    /** Cancel audio recording*/
-    cancel: function () {
-        //stop the recording feature
-        audioRecorder.mediaRecorder.stop();
-
-        //stop all the tracks on the active stream in order to stop the stream
-        audioRecorder.stopStream();
-
-        //reset API properties for next recording
-        audioRecorder.resetRecordingProperties();
-    },
-    /** Stop all the tracks on the active stream in order to stop the stream and remove
-     * the red flashing dot showing in the tab
-     */
-    stopStream: function () {
-        //stopping the capturing request by stopping all the tracks on the active stream
-        audioRecorder.streamBeingCaptured.getTracks() //get all tracks from the stream
-            .forEach(track /*of type MediaStreamTrack*/ => track.stop()); //stop each one
-    },
-    /** Reset all the recording properties including the media recorder and stream being captured*/
-    resetRecordingProperties: function () {
-        audioRecorder.mediaRecorder = null;
-        audioRecorder.streamBeingCaptured = null;
-
-        /*No need to remove event listeners attached to mediaRecorder as
-        If a DOM element which is removed is reference-free (no references pointing to it), the element itself is picked
-        up by the garbage collector as well as any event handlers/listeners associated with it.
-        getEventListeners(audioRecorder.mediaRecorder) will return an empty array of events.*/
-    }
+    li.appendChild(mt);
+    li.appendChild(hf);
+    ul.appendChild(li);
 }
