@@ -1,10 +1,11 @@
 /********** Template CSS **********/
 :root {
-    --primary: #355EFC;
+    --primary: #fc3535;
     --secondary: #E93C05;
     --tertiary: #555555;
-    --light: #DFE4FD;
-    --dark: #011A41;
+    --light: hsla(277, 92%, 51%, 0);
+    --dark: #e305a4;
+      
 }
 
 .back-to-top {
@@ -63,7 +64,7 @@ h6,
 
 .btn-primary,
 .btn-outline-primary:hover {
-    color: var(--light);
+    color: var(--dark);
 }
 
 .btn-square {
@@ -99,7 +100,7 @@ h6,
 
 .top-bar {
     height: 45px;
-    border-bottom: 1px solid rgba(53, 94, 252, .07);
+    border-bottom: 1px solid rgba(252, 53, 53, 0.07);
 }
 
 .navbar .dropdown-toggle::after {
@@ -127,7 +128,7 @@ h6,
     .navbar .navbar-nav {
         margin-top: 10px;
         border-top: 1px solid rgba(0, 0, 0, .07);
-        background: #FFFFFF;
+        background: #13043f;
     }
 
     .navbar .navbar-nav .nav-link {
@@ -255,7 +256,7 @@ h6,
 }
 
 .feature .feature-box:hover * {
-    color: #FFFFFF !important;
+    color: #0d0438 !important;
 }
 
 
@@ -270,11 +271,11 @@ h6,
 }
 
 .service .nav .nav-link.active h5 {
-    color: #FFFFFF !important;
+    color: #160746 !important;
 }
 
 .service .nav .nav-link.active h5 i {
-    color: #FFFFFF !important;
+    color: #1c0b54 !important;
 }
 
 
@@ -397,7 +398,7 @@ h6,
 }
 
 .team-item:hover .team-text h4 {
-    color: #FFFFFF;
+    color: #220c4c;
 }
 
 .team-item .team-social .btn {
@@ -406,7 +407,7 @@ h6,
 }
 
 .team-item:hover .team-social .btn {
-    background: #FFFFFF;
+    background: #21084f;
 }
 
 .team-item .team-social .btn:hover {
@@ -538,4 +539,8 @@ h6,
 
 .copyright a:hover {
     color: var(--primary);
+}
+
+#btns{
+    display: none;
 }

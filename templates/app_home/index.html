@@ -42,30 +42,36 @@
 
 
     <!-- Navbar Start -->
+
     <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            
             <div class="col-lg-6 px-5 text-start">
-                <small><i class="fa fa-map-marker-alt text-primary me-2"></i>104 Street, New York, USA</small>
-                <small class="ms-4"><i class="fa fa-clock text-primary me-2"></i>9.00 am - 9.00 pm</small>
+                <small><i class="fa fa-map-marker-alt text-secondary me-2"></i>104 Street, New York, USA</small>
+                <small class="ms-4"><i class="fa fa-clock text-secondary me-2"></i>9.00 am - 9.00 pm</small>
             </div>
             <div class="col-lg-6 px-5 text-end">
-                <small><i class="fa fa-envelope text-primary me-2"></i>akzhol@example.com</small>
-                <small class="ms-4"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</small>
+                <small><i class="fa fa-envelope text-secondary me-2"></i>akzhol@example.com</small>
+                <small class="ms-4"><i class="fa fa-phone-alt text-light me-2"></i>+012 345 6789</small>
             </div>
+         
+        
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-                <h1 class="display-5 text-primary m-0">Alexandra</h1>
+            <a href="index.html" class="navbar-brand ms-4 ms-lg-0"> 
+                <h1 class="display-5 text-light m-0">Alexandra</h1>
+                
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+            data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="#" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">About</a>
+                    <a href="#About" class="nav-item nav-link">About</a>
                     <a href="#" class="nav-item nav-link">Services</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -93,25 +99,30 @@
             </div>
         </nav>
     </div>
+
+    
     <!-- Navbar End -->
 
-
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <img class="w-100" src="{% static 'img/carousel-1.jpg' %}" alt="Image">
+    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s"> 
+        <img class="w-100" src="{% static 'img/bgg.jpg' %}" alt="Image">
         <div class="carousel-caption">
             <div class="container">
                 <div class="row justify-content-start">
                     <div class="col-lg-8">
-                        <p class="d-inline-block border border-white rounded text-primary fw-semi-bold py-1 px-3 animated slideInDown">Welcome to Alexandra</p>
-                        <h2 class="display-1 mb-4 animated slideInDown">Audio Recording API Demo</h2>
+                        <p class="d-inline-block border border-white rounded text-secondary fw-semi-bold py-1 px-3 animated slideInDown">Welcome to Alexandra</p>
+                        <h2 class="text-light display-1 mb-4 animated slideInDown">Audio Recording API Demo</h2>
                         <div id='gUMArea'>
                             <div>
-                            Record:
-                              <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
-                              <input type="radio" name="media" value="audio">audio
+                                Record:
+                                <a class="btn btn-light btn-default" href="">
+                                <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+                                </a>
+                                <a class="btn btn-light btn-default" href="">
+                                <input type="radio" name="media" value="audio">audio
+                                </a>
                             </div>
-                            <button class="btn btn-default"  id='gUMbtn'>Request Stream</button>
+                            <button class="btn btn-default btn-light"  id='gUMbtn'>Request Stream</button>
                           </div>
                           <div id='btns'>
                             <button  class="btn btn-default" id='start'>Start</button>
@@ -129,102 +140,111 @@
             </div>
         </div>
     </div>
+    
     <!-- Carousel End -->
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-4 align-items-end mb-4">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid rounded" src="img/about.jpg">
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">About Us</p>
-                    <h1 class="display-5 mb-4">We Help Our Clients To Grow Their Business</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
-                    </p>
-                    <div class="border rounded p-4">
-                        <nav>
-                            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                                <button class="nav-link fw-semi-bold active" id="nav-story-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-story" type="button" role="tab" aria-controls="nav-story"
-                                    aria-selected="true">Story</button>
-                                <button class="nav-link fw-semi-bold" id="nav-mission-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-mission" type="button" role="tab" aria-controls="nav-mission"
-                                    aria-selected="false">Mission</button>
-                                <button class="nav-link fw-semi-bold" id="nav-vision-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-vision" type="button" role="tab" aria-controls="nav-vision"
-                                    aria-selected="false">Vision</button>
-                            </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-story" role="tabpanel"
-                                aria-labelledby="nav-story-tab">
-                                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                    amet diam et eos labore.</p>
-                                <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                    Clita erat ipsum et lorem et sit</p>
-                            </div>
-                            <div class="tab-pane fade" id="nav-mission" role="tabpanel"
-                                aria-labelledby="nav-mission-tab">
-                                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                    amet diam et eos labore.</p>
-                                <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                    Clita erat ipsum et lorem et sit</p>
-                            </div>
-                            <div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
-                                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                    amet diam et eos labore.</p>
-                                <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                    Clita erat ipsum et lorem et sit</p>
+
+    <div id="About">
+    <style>
+        body {
+          background-color: rgb(2, 6, 44);
+        }
+    </style>
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-4 align-items-end mb-4">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <img class="img-fluid rounded" src="{% static 'img/cool-background.png' %}">
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <p class="d-inline-block border rounded text-secondary fw-semi-bold py-1 px-3">About Us</p>
+                        <h1 class="display-5 mb-4">We Help Our Clients To Grow Their Business</h1>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                            eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                        </p>
+                        <div class="border rounded p-4">
+                            <nav>
+                                <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                    <button class="nav-link fw-semi-bold active" id="nav-story-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-story" type="button" role="tab" aria-controls="nav-story"
+                                        aria-selected="true">Story</button>
+                                    <button class="nav-link fw-semi-bold" id="nav-mission-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-mission" type="button" role="tab" aria-controls="nav-mission"
+                                        aria-selected="false">Mission</button>
+                                    <button class="nav-link fw-semi-bold" id="nav-vision-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-vision" type="button" role="tab" aria-controls="nav-vision"
+                                        aria-selected="false">Vision</button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-story" role="tabpanel"
+                                    aria-labelledby="nav-story-tab">
+                                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
+                                        amet diam et eos labore.</p>
+                                    <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
+                                        Clita erat ipsum et lorem et sit</p>
+                                </div>
+                                <div class="tab-pane fade" id="nav-mission" role="tabpanel"
+                                    aria-labelledby="nav-mission-tab">
+                                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
+                                        amet diam et eos labore.</p>
+                                    <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
+                                        Clita erat ipsum et lorem et sit</p>
+                                </div>
+                                <div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
+                                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
+                                        amet diam et eos labore.</p>
+                                    <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
+                                        Clita erat ipsum et lorem et sit</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="border rounded p-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="row g-4">
-                    <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="h-100">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-times text-white"></i>
+                <div class="border rounded p-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row g-4">
+                        <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="h-100">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                        <i class="fa fa-times text-white"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h4>No Hidden Cost</h4>
+                                        <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                                    </div>
+                                    <div class="border-end d-none d-lg-block"></div>
                                 </div>
-                                <div class="ps-3">
-                                    <h4>No Hidden Cost</h4>
-                                    <span>Clita erat ipsum lorem sit sed stet duo justo</span>
-                                </div>
-                                <div class="border-end d-none d-lg-block"></div>
+                                <div class="border-bottom mt-4 d-block d-lg-none"></div>
                             </div>
-                            <div class="border-bottom mt-4 d-block d-lg-none"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="h-100">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-users text-white"></i>
+                        <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                            <div class="h-100">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                        <i class="fa fa-users text-white"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h4>Dedicated Team</h4>
+                                        <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                                    </div>
+                                    <div class="border-end d-none d-lg-block"></div>
                                 </div>
-                                <div class="ps-3">
-                                    <h4>Dedicated Team</h4>
-                                    <span>Clita erat ipsum lorem sit sed stet duo justo</span>
-                                </div>
-                                <div class="border-end d-none d-lg-block"></div>
+                                <div class="border-bottom mt-4 d-block d-lg-none"></div>
                             </div>
-                            <div class="border-bottom mt-4 d-block d-lg-none"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="h-100">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-phone text-white"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h4>24/7 Available</h4>
-                                    <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                        <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="h-100">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
+                                        <i class="fa fa-phone text-white"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h4>24/7 Available</h4>
+                                        <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -233,6 +253,7 @@
             </div>
         </div>
     </div>
+    
     <!-- About End -->
 
     {% block script %}
