@@ -255,6 +255,51 @@
     </div>
     
     <!-- About End -->
+    <!-- Project start -->
+    <div id="Chat">
+        <style>
+            body {
+              background-color: rgb(2, 6, 44);
+            }
+        </style>
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-4 align-items-end mb-4">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <img class="img-fluid rounded" src="{% static 'img/cool-background.png' %}">
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="border rounded p-4">
+                                <nav>
+                                    <div class="nav nav-tabs mb-3" id="nav-tab2" role="tablist">
+                                        <button class="nav-link fw-semi-bold active" id="nav-story-tab2" data-bs-toggle="tab"
+                                            data-bs-target="#nav-story2" type="button" role="tab" aria-controls="nav-story"
+                                            aria-selected="true">Story</button>
+                                        <button class="nav-link fw-semi-bold" id="nav-mission-tab2" data-bs-toggle="tab"
+                                            data-bs-target="#nav-mission2" type="button" role="tab" aria-controls="nav-mission"
+                                            aria-selected="false">Mission</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent2">
+                                    <div class="tab-pane fade show active" id="nav-story2" role="tabpanel"
+                                        aria-labelledby="nav-story-tab">
+                                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
+                                            amet diam et eos labore.</p>
+                                        <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
+                                            Clita erat ipsum et lorem et sit</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-mission2" role="tabpanel"
+                                        aria-labelledby="nav-mission-tab">
+                                        <p>Test</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     {% block script %}
         <!-- JavaScript Libraries -->
@@ -267,7 +312,9 @@
         <script src="{% static 'lib/counterup/counterup.min.js' %}"></script> {% endcomment %}
         
         <!-- Template Javascript -->
-        
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/audio-recording.js' %}"></script>
         
         {% endblock script %}  
     
