@@ -24,8 +24,8 @@ gUMbtn.onclick = e => {
             },
             audio: {
             tag: 'audio',
-            type: 'audio/ogg',
-            ext: '.ogg',
+            type: 'audio/wav',
+            ext: '.wav',
             gUM: {audio: true}
             }
         };

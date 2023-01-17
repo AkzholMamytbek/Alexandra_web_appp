@@ -125,8 +125,8 @@
                             <button class="btn btn-default btn-light"  id='gUMbtn'>Request Stream</button>
                           </div>
                           <div id='btns'>
-                            <button  class="btn btn-default" id='start'>Start</button>
-                            <button  class="btn btn-default" id='stop'>Stop</button>
+                            <button  class="btn btn-light btn-default" id='start'>Start</button>
+                            <button  class="btn btn-light btn-default" id='stop'>Stop</button>
                           </div>
                           <div>
                             <ul  class="list-unstyled" id='ul'></ul>
@@ -266,10 +266,10 @@
                 <div class="container">
                     <div class="row g-4 align-items-end mb-4">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <img class="img-fluid rounded" src="{% static 'img/cool-background.png' %}">
+                            <img class="img-fluid rounded" src="{% static 'img/cool-background.png' %}" style="height: 500px">
                         </div>
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="border rounded p-4">
+                            <div class="border rounded p-4" style="height: 500px">
                                 <nav>
                                     <div class="nav nav-tabs mb-3" id="nav-tab2" role="tablist">
                                         <button class="nav-link fw-semi-bold active" id="nav-story-tab2" data-bs-toggle="tab"
@@ -281,15 +281,14 @@
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent2">
-                                    <div class="tab-pane fade show active" id="nav-story2" role="tabpanel"
-                                        aria-labelledby="nav-story-tab">
-                                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                            amet diam et eos labore.</p>
-                                        <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                            Clita erat ipsum et lorem et sit</p>
+                                    <div class="tab-pane fade show active border rounded p-4" id="nav-story2" role="tabpanel"
+                                        aria-labelledby="nav-story-tab" style="height: 400px">
+                                        <form>
+                                            
+                                        </form>
                                     </div>
-                                    <div class="tab-pane fade" id="nav-mission2" role="tabpanel"
-                                        aria-labelledby="nav-mission-tab">
+                                    <div class="tab-pane fade border rounded p-4" id="nav-mission2" role="tabpanel"
+                                        aria-labelledby="nav-mission-tab" style="height: 400px">
                                         <p>Test</p>
                                     </div>
                                 </div>
