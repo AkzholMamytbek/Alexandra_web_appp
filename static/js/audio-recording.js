@@ -56,6 +56,8 @@ stop.onclick = e => {
     stop.disabled = true;
     recorder.stop();
     start.removeAttribute('disabled');
+    log("stopped")
+
 }
 
 
@@ -67,6 +69,8 @@ function makeLink(){
         , mt = document.createElement(media.tag)
         , hf = document.createElement('a')
     ;
+    log(blob)
+    
     mt.controls = true;
     mt.src = url;
     hf.href = url;
@@ -76,4 +80,70 @@ function makeLink(){
     li.appendChild(mt);
     li.appendChild(hf);
     ul.appendChild(li);
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: "http://127.0.0.1:5000/api",
+    //     data: `{
+    //       "Id": 78912,
+    //       "Customer": "Jason Sweet",
+    //     }`,
+    //     success: function (result) {
+    //        console.log(result);
+    //     },
+    //     dataType: "json"
+    // });
+    
+    // $.ajax({
+    //     type: 'POST',
+    //     dataType: 'json',
+    //     url: "http://127.0.0.1:5000/api",
+    //     // username: 'user',
+    //     // password: 'pass',
+    //     crossDomain: true,
+    //     xhrFields: {
+    //       withCredentials: true,
+    //     },
+    //     data: {
+    //         "Id": 78912,
+    //         "Customer": "Jason Sweet",
+    //     },
+    //   })
+    //     .done(function (data) {
+    //       console.log('done');
+    //     })
+    //     .fail(function (xhr, textStatus, errorThrown) {
+    //       alert(xhr.responseText);
+    //       alert(textStatus);
+    // });
+    // var data = new FormData()
+    // data.append('file', blob , 'file')
+
+    // fetch('http://127.0.0.1:8000/audioblob/', {
+    //     method: 'POST',
+    //     body: data
+
+    // }).then(response => response.json()
+    // ).then(json => {
+    //     console.log(json)
+    // });
+    // var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+
+    console.log("start sending binary data...");
+    var form = new FormData();
+    form.append('audio', blob);
+
+    $.ajax({
+        url: 'http://localhost:8000/audioblob/',
+        type: 'POST',
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            console.log('response' + JSON.stringify(data));
+        },
+        error: function () {
+        // handle error case here
+        }
+    })
 }

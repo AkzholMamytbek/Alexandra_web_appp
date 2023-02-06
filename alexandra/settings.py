@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app_home',
 
     'bootstrap5',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
