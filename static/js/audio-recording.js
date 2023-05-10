@@ -14,22 +14,13 @@ media;
 
 
 gUMbtn.onclick = e => {
-    let mv = id('mediaVideo'),
-        mediaOptions = {
-            video: {
-            tag: 'video',
-            type: 'video/webm',
-            ext: '.mp4',
-            gUM: {video: true, audio: true}
-            },
-            audio: {
-            tag: 'audio',
-            type: 'audio/wav',
-            ext: '.wav',
-            gUM: {audio: true}
-            }
-        };
-    media = mv.checked ? mediaOptions.video : mediaOptions.audio;
+    media = {
+        tag: 'audio',
+        type: 'audio/wav',
+        ext: '.wav',
+        gUM: {audio: true}
+    };
+    
     navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
         stream = _stream;
         id('gUMArea').style.display = 'none';
@@ -67,67 +58,20 @@ function makeLink(){
         , url = URL.createObjectURL(blob)
         , li = document.createElement('li')
         , mt = document.createElement(media.tag)
-        , hf = document.createElement('a')
+        // , hf = document.createElement('a')
     ;
     log(blob)
     
     mt.controls = true;
     mt.src = url;
-    hf.href = url;
-    hf.download = `${counter++}${media.ext}`;
-    hf.innerHTML = `donwload ${hf.download}`;
+    // hf.href = url;
+    // hf.download = `${counter++}${media.ext}`;
+    // hf.innerHTML = `donwload ${hf.download}`;
 
+    li.classList.add('bg-yellow', 'text-left');
     li.appendChild(mt);
-    li.appendChild(hf);
+    // li.appendChild(hf);
     ul.appendChild(li);
-
-    // $.ajax({
-    //     type: "POST",
-    //     url: "http://127.0.0.1:5000/api",
-    //     data: `{
-    //       "Id": 78912,
-    //       "Customer": "Jason Sweet",
-    //     }`,
-    //     success: function (result) {
-    //        console.log(result);
-    //     },
-    //     dataType: "json"
-    // });
-    
-    // $.ajax({
-    //     type: 'POST',
-    //     dataType: 'json',
-    //     url: "http://127.0.0.1:5000/api",
-    //     // username: 'user',
-    //     // password: 'pass',
-    //     crossDomain: true,
-    //     xhrFields: {
-    //       withCredentials: true,
-    //     },
-    //     data: {
-    //         "Id": 78912,
-    //         "Customer": "Jason Sweet",
-    //     },
-    //   })
-    //     .done(function (data) {
-    //       console.log('done');
-    //     })
-    //     .fail(function (xhr, textStatus, errorThrown) {
-    //       alert(xhr.responseText);
-    //       alert(textStatus);
-    // });
-    // var data = new FormData()
-    // data.append('file', blob , 'file')
-
-    // fetch('http://127.0.0.1:8000/audioblob/', {
-    //     method: 'POST',
-    //     body: data
-
-    // }).then(response => response.json()
-    // ).then(json => {
-    //     console.log(json)
-    // });
-    // var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
 
     console.log("start sending binary data...");
     var form = new FormData();
@@ -140,10 +84,16 @@ function makeLink(){
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log('response' + JSON.stringify(data));
+            console.log(JSON.stringify(data));
+            let li = document.createElement('li')
+            let p = document.createElement('p')
+            p.innerHTML = data
+            p.classList.add('text-right');
+            li.appendChild(p)
+            ul.appendChild(li)
         },
-        error: function () {
-        // handle error case here
+        error: function (e) {
+            console.log('error' + e)
         }
     })
 }

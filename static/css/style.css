@@ -544,3 +544,24 @@ h6,
 #btns{
     display: none;
 }
+
+.text-right {
+    float: left;
+    /* width: 200px; */
+    /* border: 3px solid #73AD21; */
+    padding: 10px;
+}
+
+.text-right {
+    float: right;
+    width: 300px;
+    border: 3px solid #73AD21;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: Arial, Verdana;
+}
+
+#gUMbtn{
+    padding-top: 10px;
+}
