@@ -12,40 +12,24 @@ from django.conf import settings
 
 import subprocess
 from vosk import Model, KaldiRecognizer, SetLogLevel
-
+from app_home.transcriber import Transcriber
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 media_url = settings.MEDIA_URL
 
-SAMPLE_RATE = 16000
-SetLogLevel(0)
-model = Model(lang="en")
-rec = KaldiRecognizer(model, SAMPLE_RATE)
+transcriber = Transcriber()
 
-def ffmpeg(filename):
-    print(f"Filename:")
-    file_path = os.path.join(media_url, filename)
-    with subprocess.Popen(["ffmpeg", "-loglevel", "quiet", "-i",
-                                filename,
-                                "-ar", str(SAMPLE_RATE) , "-ac", "1", "-f", "s16le", "-"],
-                                stdout=subprocess.PIPE) as process:
 
-        while True:
-            data = process.stdout.read(4000)
-            if len(data) == 0:
-                break
-            if rec.AcceptWaveform(data):
-                print(rec.Result())
-            else:
-                print(f"Partial result: {rec.PartialResult()}")
-        return rec.FinalResult()
+def transcribe(filename):
+    filepath = os.path.abspath(filename)
+    transcription = transcriber.transcribe(filepath)
+
+    print(transcription)
 
 def index(request):
-    
-    lis = ['apple', 'samsung', 'huawei']
-    return render(request, 'app_home/index.html', {'data': lis})
+    return render(request, 'app_home/index.html')
 
 @csrf_exempt
 def get_audio_blob(request):
@@ -61,7 +45,8 @@ def get_audio_blob(request):
         # with open(os.path.abspath(path), 'wb') as f:
         #     f.write(file.stream._file.read())
         # tmp_file = os.path.join('file.wav')
-        res = ffmpeg(path)
+        
+        res = transcribe(path)
         if res:
              return HttpResponse(res)
 
