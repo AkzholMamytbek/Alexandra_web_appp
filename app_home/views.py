@@ -39,14 +39,14 @@ def get_audio_blob(request):
         path = default_storage.save(os.path.join('audio', 'somename.wav'), ContentFile(audio_data.read()))
         
         
-        with open(os.path.join('file.wav'), 'wb') as f:
-            f.write(audio_data.read())
+        # with open(os.path.join('file.wav'), 'wb') as f:
+        #     f.write(audio_data.read())
 
         # with open(os.path.abspath(path), 'wb') as f:
         #     f.write(file.stream._file.read())
         # tmp_file = os.path.join('file.wav')
         
-        res = transcribe(path)
+        res = transcribe(os.path.join('media', path))
         if res:
              return HttpResponse(res)
 

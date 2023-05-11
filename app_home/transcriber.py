@@ -32,7 +32,7 @@ class Transcriber():
         rec = KaldiRecognizer(self.model, SAMPLE_RATE)
         rec.SetWords(True)
 
-        filename = "C:\\Users\\Qasym\\Desktop\\Alexandra\\Alexandra_web_appp\\app_home\\somename_5CVCG8J.wav"
+        # filename = "C:\\Users\\Qasym\\Desktop\\Alexandra\\Alexandra_web_appp\\app_home\\somename_5CVCG8J.wav"
 
         if not os.path.exists(filename):
             raise FileNotFoundError(filename)
