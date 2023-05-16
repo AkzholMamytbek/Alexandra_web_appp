@@ -78,7 +78,7 @@ function makeLink(){
     form.append('audio', blob);
 
     $.ajax({
-        url: 'http://localhost:8000/api/v1/audio-recognizer/',
+        url: 'http://'+window.location.host+'/api/v1/audio-recognizer/',
         type: 'POST',
         data: form,
         processData: false,
