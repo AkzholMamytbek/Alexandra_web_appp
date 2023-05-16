@@ -25,8 +25,8 @@ transcriber = Transcriber()
 def transcribe(filename):
     filepath = os.path.abspath(filename)
     transcription = transcriber.transcribe(filepath)
-
     print(transcription)
+    return transcription['transcription'][0]['text']
 
 def index(request):
     return render(request, 'app_home/index.html')
