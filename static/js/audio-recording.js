@@ -73,12 +73,16 @@ function makeLink(){
     // li.appendChild(hf);
     ul.appendChild(li);
 
-    console.log("start sending binary data...");
+    var select_language = document.getElementById("language-select");
+    var lang_value = select_language.value;
+
+    console.log("start sending binary data... Language is: "+lang_value);
     var form = new FormData();
     form.append('audio', blob);
+    form.append('language', lang_value)
 
     $.ajax({
-        url: 'http://'+window.location.host+'/api/v1/audio-recognizer/',
+        url: 'https://'+window.location.host+'/api/v1/audio-recognizer/',
         type: 'POST',
         data: form,
         processData: false,

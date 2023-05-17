@@ -22,9 +22,9 @@ media_url = settings.MEDIA_URL
 transcriber = Transcriber()
 
 
-def transcribe(filename):
+def transcribe(filename, language_code):
     filepath = os.path.abspath(filename)
-    transcription = transcriber.transcribe(filepath)
+    transcription = transcriber.transcribe(filepath, language_code)
     print(transcription)
     return transcription['transcription'][0]['text']
 
@@ -35,7 +35,8 @@ def index(request):
 def get_audio_blob(request):
     if request.method == "POST":
         audio_data = request.FILES['audio']
-        
+        language_code = request.POST['language']
+
         path = default_storage.save(os.path.join('audio', 'somename.wav'), ContentFile(audio_data.read()))
         
         
@@ -46,7 +47,7 @@ def get_audio_blob(request):
         #     f.write(file.stream._file.read())
         # tmp_file = os.path.join('file.wav')
         
-        res = transcribe(os.path.join('media', path))
+        res = transcribe(os.path.join('media', path), language_code)
         if res:
              return HttpResponse(res)
 
